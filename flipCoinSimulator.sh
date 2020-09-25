@@ -5,8 +5,8 @@ echo "Welcome to Flip Coin Simulator Program";
 heads=0;
 tails=0;
 
-#Multiple coin toss
-for ((toss=0; toss<20; toss++));
+#Coin toss till heads or tails win 21 times
+while [[ $heads -lt 21 && $tails -lt 21 ]];
 do
 	coin=$((RANDOM%2));
 	if [ $coin -eq 0 ];
@@ -17,5 +17,13 @@ do
 	fi
 done
 
-echo "Heads won $heads times";
-echo "Tails won $tails times";
+#Check the winner
+if [ $heads -eq 21 ];
+then
+	echo "Heads won $heads times";
+elif [ $tails -eq 21 ];
+then
+	echo "Tails won $tails times";
+else
+	echo "It's a tie!";
+fi
